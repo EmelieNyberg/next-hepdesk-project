@@ -9,11 +9,11 @@ type TicketCardProps = {
 
 export default function TicketCard({ ticket }: TicketCardProps) {
     return (
-        <li className="bg-(--color-component) m-6 p-6 rounded-xl border border-white/10 hover:border-white/20 transition">
-            <Link href={`/tickets/${ticket.id}`}>
+        <li className="card">
+            <Link href={`/tickets/${ticket.id}`} className="grid gap-2 pb-2">
                 <h3 className="font-bold">{ticket.title}</h3>
                 <p className="line-clamp-2">{ticket.body}</p>
-                <div className={`pill ${ticket.priority}`}>
+                <div className={`pill priority-${ticket.priority}`}>
                     {ticket.priority} priority
                 </div>
             </Link>
