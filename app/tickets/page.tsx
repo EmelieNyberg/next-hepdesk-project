@@ -10,7 +10,7 @@ export default async function TicketsPage() {
 
     return (
         <>
-            <main className="bg-(--color-component) rounded-xl border border-white/10 m-3">
+            <main className="main-page">
                 <ul>
                     {tickets.map(ticket => (
                         <TicketCard key={ticket.id} ticket={ticket} />
