@@ -50,7 +50,7 @@ body {
     @apply py-1 px-2 mt-3 inline-block text-xs font-semibold;
   }
 
-  .pill-two {
+  .pill-ticket-page {
     @apply py-1 px-4 rounded-xl inline-block text-xs font-semibold;
   }
 
