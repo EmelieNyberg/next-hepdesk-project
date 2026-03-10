@@ -8,21 +8,33 @@ export default async function TicketsPage({
     searchParams,
 }: {
     searchParams: Promise<{
-        search?: string
-    }>
+        search?: string;
+        sort?: string;
+        priority?: string;
+    }>;
 }) {
-
-    const tickets = await getTickets();
-
     const params = await searchParams;
 
     const search = params.search?.toLowerCase() || "";
+    const sort = params.sort || "newest";
+    const priority = params.priority || "all";
 
-    const filteredTickets = tickets.filter((ticket) =>
-        ticket.title.toLowerCase().includes(search) ||
-        ticket.body.toLowerCase().includes(search) ||
-        ticket.user_email.toLowerCase().includes(search)
-    )
+    const order = sort === "oldest" ? "asc" : "desc";
+
+    const tickets = await getTickets({ order });
+
+    const filteredTickets = tickets.filter((ticket) => {
+        const matchesSearch =
+            ticket.title.toLowerCase().includes(search) ||
+            ticket.body.toLowerCase().includes(search) ||
+            ticket.user_email.toLowerCase().includes(search);
+
+        const matchesPriority =
+            priority === "all" ||
+            ticket.priority.toLowerCase() === priority.toLowerCase();
+
+        return matchesSearch && matchesPriority;
+    });
 
     return (
         <>
@@ -39,7 +51,7 @@ export default async function TicketsPage({
                     }
                 </ul>
             </main>
-            <Toolbar search={params.search} />
+            <Toolbar search={params.search} sort={sort} priority={priority} />
         </>
     )
 }
