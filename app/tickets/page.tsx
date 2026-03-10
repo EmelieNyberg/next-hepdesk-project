@@ -4,18 +4,34 @@ import { getTickets } from "@/lib/api/tickets";
 import TicketCard from "@/components/tickets/ticket-card";
 import Toolbar from "@/components/toolbar/toolbar";
 
-export default async function TicketsPage() {
+export default async function TicketsPage({
+    searchParams,
+}: {
+    searchParams: Promise<{
+        search?: string
+    }>
+}) {
 
     const tickets = await getTickets();
+
+    const params = await searchParams;
+
+    const search = params.search?.toLowerCase() || "";
+
+    const filteredTickets = tickets.filter((ticket) =>
+        ticket.title.toLowerCase().includes(search) ||
+        ticket.body.toLowerCase().includes(search) ||
+        ticket.user_email.toLowerCase().includes(search)
+    )
 
     return (
         <>
             <main className="main-page">
                 <ul>
-                    {tickets.map(ticket => (
+                    {filteredTickets.map((ticket) => (
                         <TicketCard key={ticket.id} ticket={ticket} />
                     ))}
-                    {tickets.length === 0 && (
+                    {filteredTickets.length === 0 && (
                         <li>
                             <p className="text-center"> There are no open tickets, yay!</p>
                         </li>
@@ -23,7 +39,7 @@ export default async function TicketsPage() {
                     }
                 </ul>
             </main>
-            <Toolbar />
+            <Toolbar search={params.search} />
         </>
     )
 }
