@@ -13,7 +13,7 @@ export default async function TicketOverview() {
                 Recent Tickets</h2>
 
             <ul className="grid gap-3">
-                {tickets.map((ticket) => (
+                {tickets.slice(0, 4).map((ticket) => (
                     <li
                         key={ticket.id}
                         className="bg-(--color-component) rounded-xl border border-white/10 p-6 flex gap-6">

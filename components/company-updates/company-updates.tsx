@@ -55,7 +55,7 @@ export default function CompanyUpdates() {
                     Company Updates</h2>
             </div>
 
-            <ul className="grid gap-3 p-6">
+            <ul className="grid gap-3 p-6 max-h-[420px] overflow-y-auto">
                 {companyUpdates.map((update, index) => (
                     <li
                         key={index}
