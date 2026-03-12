@@ -22,10 +22,12 @@ export default async function TicketPage({
         <main className="main-page">
             <nav className="flex justify-between px-6 pt-6">
                 <Link href="/tickets" className="flex items-center gap-2 font-bold transition-transform duration-200 hover:-translate-x-1"><LuCircleArrowLeft /><span>Back</span></Link>
+
                 <div className="flex gap-3">
+                    {/* Edit form */}
                     <Link href={`/tickets/edit/${ticket.id}`} className="p-3 rounded-full hover:bg-(--color-component) transition"><LuPencil />
                     </Link>
-
+                    {/* Delete form */}
                     <DeleteTicketForm id={ticket.id.toString()} />
                 </div>
             </nav>

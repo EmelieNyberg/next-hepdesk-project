@@ -36,7 +36,7 @@ export default function FilterTickets({
           name="sort"
           defaultValue={sort}
           onChange={(e) => e.currentTarget.form?.submit()}
-          className="flex-1 rounded-xl border border-white/10 bg-(--color-component) p-2"
+          className="cursor-pointer flex-1 rounded-xl border border-white/10 bg-(--color-component) p-2"
         >
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
@@ -50,7 +50,7 @@ export default function FilterTickets({
           name="priority"
           defaultValue={priority}
           onChange={(e) => e.currentTarget.form?.submit()}
-          className="flex-1 rounded-xl border border-white/10 bg-(--color-component) p-2"
+          className="cursor-pointer flex-1 rounded-xl border border-white/10 bg-(--color-component) p-2"
         >
           <option value="all">All priorities</option>
           <option value="high">High</option>
