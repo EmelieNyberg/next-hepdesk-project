@@ -3,23 +3,33 @@
 import { API_URL } from "../config";
 import { Ticket } from "../types/ticket";
 
-export async function getTickets(): Promise<Ticket[]> {
+type GetTicketsOptions = {
+    order?: "asc" | "desc";
+};
 
+export async function getTickets(options?: GetTicketsOptions): Promise<Ticket[]> {
     try {
-        const response = await fetch(`${API_URL}/tickets`)
-        //Lägga till cache
+        const params = new URLSearchParams();
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch tickets")
+        if (options?.order) {
+            params.set("order", options.order);
         }
 
-        return response.json()
+        const url = params.toString()
+            ? `${API_URL}/tickets?${params.toString()}`
+            : `${API_URL}/tickets`;
 
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch tickets");
+        }
+
+        return response.json();
     } catch (error) {
         console.error("Error while fetching tickets: ", error);
         throw error;
     }
-
 };
 
 export async function getTicket({
