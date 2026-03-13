@@ -4,8 +4,8 @@ import CreateTicketForm from "@/components/tickets/create-ticket-form";
 
 export default function CreateTicketPage() {
     return (
-        <main className="bg-(--color-component) rounded-xl border border-white/10">
-            <h1>Create new ticket</h1>
+        <main className="main-page">
+            <h1 className="border-b border-white/10 p-6 font-bold">Create new ticket</h1>
             <CreateTicketForm />
         </main>
     );
