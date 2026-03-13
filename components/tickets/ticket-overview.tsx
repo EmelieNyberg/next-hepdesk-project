@@ -1,7 +1,8 @@
 // components/tickets/ticket-overview.tsx
 
 import { getTickets } from "@/lib/api/tickets"
-import { MdOutlineChat } from "react-icons/md";
+import { PiChatTextBold } from "react-icons/pi";
+
 
 export default async function TicketOverview() {
     const tickets = await getTickets();
@@ -9,7 +10,7 @@ export default async function TicketOverview() {
     return (
         <section className="bg-(--color-component) rounded-xl border border-white/10 p-6">
 
-            <h2 className="flex items-center gap-4 text-xl font-bold py-3"><MdOutlineChat className="text-(--text-clr)" />
+            <h2 className="flex items-center gap-4 text-xl font-bold py-3"><PiChatTextBold className="text-(--text-clr)" />
                 Recent Tickets</h2>
 
             <ul className="grid gap-3">

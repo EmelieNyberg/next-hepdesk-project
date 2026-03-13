@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎫 IT Helpdesk Ticket System
 
-## Getting Started
+A minimal **IT support helpdesk application** built to practice **CRUD operations and filtering using URL search parameters**.
 
-First, run the development server:
+The application allows users to create, view, update and manage support tickets in a simple interface. Ticket data is handled through a **custom-built API** and stored in a **MongoDB database**.
 
-```bash
+The main goal of the project was to explore how ticket data can be **filtered and controlled via search params in the URL**, making it easy to share and persist filter states.
+
+## 📖 About the Project
+
+This project simulates a simple IT support helpdesk system where users can create and manage support tickets.
+
+Tickets are stored in a MongoDB database and accessed through a custom REST API built for the project.
+
+The purpose of the project was to practice:
+- CRUD operations (Create, Read, Update, Delete)
+- Building and consuming a custom API
+- Storing and managing data using MongoDB
+- Filtering tickets using URL search parameters
+- Handling forms and user input in the frontend
+
+Using search parameters allows the application to store filter states directly in the URL, making filtered views shareable and persistent.
+
+## 🌐 Live Demo
+ 
+ 🔧 Coming soon (TBC)
+
+ Frontend:
+
+ Backend:
+
+## ✨ Features
+
+✅ View all support tickets
+
+✅ Create new support tickets
+
+✅ Update ticket information
+
+✅ Delete tickets
+
+✅ Filter tickets using URL search parameters
+
+✅ Persistent filtering via the URL
+
+✅ Ticket data stored in MongoDB
+
+✅ Data handled through a custom-built API
+
+## 🛠 Technologies
+
+### Frontend ###
+
+- Next.js
+- React
+- TypeScript
+- URL SearchParams
+
+### Backend ###
+
+- Node.js
+- Express
+
+### Database ###
+
+- MongoDB
+- Mongoose
+
+## ⚙️ Installation
+```
+# Clone the repository
+git clone https://github.com/username/repo-name.git
+
+# Navigate into the project folder
+cd repo-name
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Dashboard Page**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The dashboard serves as the main landing page of the application and provides a quick overview of the helpdesk system. From here users can navigate to the ticket system and manage support requests.
 
-## Learn More
+**Tickets Page**
 
-To learn more about Next.js, take a look at the following resources:
+Displays a list of all support tickets fetched from the API and stored in MongoDB.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Create Ticket**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Users can submit a new support ticket through a form.
 
-## Deploy on Vercel
+**Update / Manage Tickets**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tickets can be updated or deleted depending on their status.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Ticket Filtering**
+
+Tickets can be filtered using search parameters in the URL.
+
+Example:
+```
+/tickets?status=open
+/tickets?priority=high
+```
+This allows the application to maintain filter state and share filtered views easily.
+
+## 📚 Learnings
+
+Through this project I learned:
+
+- How CRUD operations work in a full application
+
+- Managing filtering using URL search parameters
+
+- Structuring a ticket management system
+
+- Handling forms and user input in React
+
+## 🔮 Future Improvements
+
+If I had more time, I would like to improve the project by adding:
+
+- 🎨 Improved UI styling and design
+
+- 🔐 User authentication / login system
+
+- 🔔 Toast notifications for user feedback
+
+- ✅ More advanced frontend form validation
+
+- 🔎 Additional filtering options for tickets
+
+- 🌐 Replace some static information with API-driven data
+
+- 🛠 Improved error handeling both in backend and frontend
+
+- 📊 More advanced ticket management features
