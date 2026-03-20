@@ -16,8 +16,8 @@ export default async function EditTicketPage({
     if (!ticket) notFound();
 
     return (
-        <main>
-            <h1>Edit ticket</h1>
+        <main className="main-page">
+            <h1 className="border-b border-white/10 p-6 font-bold">Edit ticket</h1>
             <EditTicketForm ticket={ticket} />
         </main>
     )

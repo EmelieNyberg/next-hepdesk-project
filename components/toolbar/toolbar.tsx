@@ -19,10 +19,9 @@ export default function Toolbar({ search, sort, priority }: ToolbarProps) {
                     sort={sort}
                     priority={priority}
                 />
-
             </div>
 
-            <div className="bg-(--color-component) rounded-xl border border-white/10 m-3 p-6">
+            <div className="bg-(--color-component) rounded-xl border border-white/10 m-3 mt-6 p-6">
                 <Link href="/tickets/create" className="flex gap-4 items-center whitespace-nowrap"><LuTicketPlus />
                     Create new ticket</Link>
             </div>

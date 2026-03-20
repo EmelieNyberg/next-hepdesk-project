@@ -4,8 +4,8 @@
   --color-base: 225 44% 4%;
   --color-primary: 188 86% 53%;
 
-  --background: #ffffff;
-  --foreground: hsl(var(--color-base));
+  --background: hsl(var(--color-base));
+  --foreground: #ededed;
 
   --component-bg: hsl(var(--color-primary) / 0.05);
 
@@ -21,12 +21,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: hsl(var(--color-base));
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
