@@ -4,18 +4,46 @@ import { getTickets } from "@/lib/api/tickets";
 import TicketCard from "@/components/tickets/ticket-card";
 import Toolbar from "@/components/toolbar/toolbar";
 
-export default async function TicketsPage() {
+export default async function TicketsPage({
+    searchParams,
+}: {
+    searchParams: Promise<{
+        search?: string;
+        sort?: string;
+        priority?: string;
+    }>;
+}) {
+    const params = await searchParams;
 
-    const tickets = await getTickets();
+    const search = params.search?.toLowerCase() || "";
+    const sort = params.sort || "newest";
+    const priority = params.priority || "all";
+
+    const order = sort === "oldest" ? "asc" : "desc";
+
+    const tickets = await getTickets({ order });
+
+    const filteredTickets = tickets.filter((ticket) => {
+        const matchesSearch =
+            ticket.title.toLowerCase().includes(search) ||
+            ticket.body.toLowerCase().includes(search) ||
+            ticket.user_email.toLowerCase().includes(search);
+
+        const matchesPriority =
+            priority === "all" ||
+            ticket.priority.toLowerCase() === priority.toLowerCase();
+
+        return matchesSearch && matchesPriority;
+    });
 
     return (
         <>
-            <main className="bg-(--color-component) rounded-xl border border-white/10 m-3">
+            <main className="main-page">
                 <ul>
-                    {tickets.map(ticket => (
+                    {filteredTickets.map((ticket) => (
                         <TicketCard key={ticket.id} ticket={ticket} />
                     ))}
-                    {tickets.length === 0 && (
+                    {filteredTickets.length === 0 && (
                         <li>
                             <p className="text-center"> There are no open tickets, yay!</p>
                         </li>
@@ -23,7 +51,7 @@ export default async function TicketsPage() {
                     }
                 </ul>
             </main>
-            <Toolbar />
+            <Toolbar search={params.search} sort={sort} priority={priority} />
         </>
     )
 }

@@ -65,3 +65,19 @@ export async function updateTicket(formData: FormData) {
     revalidatePath("/tickets");
     redirect("/tickets");
 }
+
+// Delete ticket
+export async function deleteTicket(formData: FormData) {
+    // get id to be able to fetch correct endpoint
+    const id = formData.get("id") as string;
+
+    const res = await fetch(`${API_URL}/tickets/${id}`, {
+        method: "DELETE",
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    revalidatePath("/tickets");
+    redirect("/tickets");
+}
